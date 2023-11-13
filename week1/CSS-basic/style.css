@@ -1,0 +1,42 @@
+body{
+    background-color: #ddd;
+}
+
+nav{
+    background-color: rgb(51, 51, 51)
+}
+li:first-child{
+    background-color: green;
+}
+
+.hero-image{
+    width: 100%;
+}
+
+#container{
+    box-shadow: 5px 5px 5px;
+    background-color: white;
+    width: fit-content;
+}
+
+.box{
+    width: 50px ;
+    height: 50px ;
+    display: inline-block;
+}
+
+#first{
+    border: 1px solid ;
+    background-color:aquamarine;
+}
+
+#second{
+    border: 1px solid ;
+    background-color:chocolate;
+}
+
+.button{
+    background-color:rgb(35, 190, 35);
+    border: 2px solid green;
+}
+
