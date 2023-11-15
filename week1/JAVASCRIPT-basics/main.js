@@ -93,6 +93,7 @@ const reservations = {
 
 // if (reservations[name]) {
 //   if (!reservations[name].claimed) {
+//     reservations[name].claimed =true
 //     console.log(`Welcome, ${name}`);
 //   } else {
 //     console.log("Hmm, someone already claimed this reservation");
@@ -105,6 +106,7 @@ const reservations = {
 
 // if (reservations[name]) {
 //   if (!reservations[name].claimed) {
+//     reservations[name].claimed =true
 //     console.log(`Welcome, ${name}`);
 //   } else {
 //     console.log("Hmm, someone already claimed this reservation");
@@ -122,6 +124,7 @@ for (let alfabet in reservations) {
 // 3.2
 if (lowercaseNameReservations[name.toLowerCase()]) {
   if (!lowercaseNameReservations[name.toLowerCase()].claimed) {
+    lowercaseNameReservations[name.toLowerCase()].claimed = true;
     console.log(`Welcome, ${name}`);
   } else {
     console.log("Hmm, someone already claimed this reservation");
@@ -197,7 +200,7 @@ for (humen of people) {
 }
 
 // 3
-
+const DELETED_INEX = 2;
 const posts = [
   { id: 1, text: "Love this product" },
   { id: 2, text: "This is the worst. DON'T BUY!" },
@@ -205,7 +208,7 @@ const posts = [
 ];
 
 posts.splice(
-  posts.findIndex((post) => post.id === 2),
+  posts.findIndex((post) => post.id === DELETED_INEX),
   1
 );
 
