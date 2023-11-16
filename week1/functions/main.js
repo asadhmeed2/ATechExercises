@@ -6,7 +6,9 @@ function isEven(num) {
 // 2
 function printOddEvenInArray(numbers) {
   for (let num of numbers) {
-    console.log(`number ${num} is ${isEven(num) ? "even" : "odd"}`);
+    if(!isEven(num)){
+      console.log(`number ${num} is  odd}`);
+    }
   }
 }
 
