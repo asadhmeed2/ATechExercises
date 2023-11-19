@@ -116,7 +116,7 @@ const pump = function (amount) {
 
   const coffeeShop = {
     beans: 40,
-  
+
     drinkRequirements: {
       latte: 10,
       americano: 5,
@@ -125,16 +125,20 @@ const pump = function (amount) {
     },
   
     makeDrink: function (drinkType) {
-        const isDrinkAvalibal = !!this.drinkRequirements[drinkType] !== undefined
+        const isDrinkAvalibal = this.drinkRequirements[drinkType] !== undefined
 
         if(!isDrinkAvalibal){
             alert(`Sorry, we don't make ${drinkType}`)
+            return
         }
 
         const isBeensEnough = (this.beans - this.drinkRequirements[drinkType]) >= 0;
 
         if(!isBeensEnough){
             alert(`Sorry, we’re all out of beans!`)
+            return
+        }else{
+            console.log(`her your ${drinkType}`);
         }
 
         this.beans -=  this.drinkRequirements[drinkType]
