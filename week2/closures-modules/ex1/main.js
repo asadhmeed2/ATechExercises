@@ -29,5 +29,5 @@ function StringFormatter (){
 
 const stringFormatter = StringFormatter()
 
-console.log(stringFormatter.capitalizeFirst('as Ad'));
+console.log(stringFormatter.capitalizeFirst('asAd'));
 console.log(stringFormatter.toSkewerCase('as Ad'));
