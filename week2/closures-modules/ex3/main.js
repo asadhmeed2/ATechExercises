@@ -1,13 +1,15 @@
+const YOUTUBE_VEDIO_URL = "https://www.youtube.com/watch?v="
+
 function SongsManager(){
 
     const _songs ={}
 
     function addSong(name , url){
-        _songs[name] = url
+        _songs[name] = url.split('=')[1]
     }
 
     function getSong(name){
-       console.log( _songs[name])
+       console.log( `${YOUTUBE_VEDIO_URL}${_songs[name]}`)
     }
 
     return {
