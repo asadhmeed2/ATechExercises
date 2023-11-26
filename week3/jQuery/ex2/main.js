@@ -15,9 +15,13 @@ input.change(()=>{
     inputValue = input.val();
 });
 
+listUl.on('click','.item',function(){
+    $(this).remove();
+})
+
 button.click(()=>{
     input.val("");
-    
+
     const item = listItem.clone();
     $(item).text(inputValue);
     listUl.append(item)
