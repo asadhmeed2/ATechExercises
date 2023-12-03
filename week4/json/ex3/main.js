@@ -6,7 +6,7 @@
     number, // number
     unit // string
  }
- habitat, // string
+ habitat, // array
 isIndangered, //boolean
 foods [], // array
 hisPredators[], //array
