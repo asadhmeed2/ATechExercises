@@ -18,7 +18,7 @@ const fetch = (isbn)=>{
 const isbnIpt = $("#input")
 
 const fetchIsbn = ()=>{
-    const isbn = isbnIpt.val();
+    const isbn = ipt.val();
 
     if(!isbn){
         return
