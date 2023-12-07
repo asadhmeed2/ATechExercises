@@ -1,0 +1,1 @@
+const WISDOMS = 'wisdoms'
