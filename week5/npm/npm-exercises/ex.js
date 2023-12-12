@@ -18,3 +18,4 @@ let blacklist = ["!", "?", ".", "@", "~", ",", "'"]
 let text = "I'M SO EXCITED!!!~!"
 console.log(`clean ${text} with blacklist [${blacklist}] validation : ${validator.blacklist(text,blacklist)}`);
 //Ultimately, it should print "im so excited"
+
