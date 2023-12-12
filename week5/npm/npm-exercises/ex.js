@@ -1,5 +1,7 @@
 const validator = require('validator');
 
+const { faker } = require('@faker-js/faker');
+
 const email = 'shoobert@dylan'
 const number = '786-329-9958'
 
@@ -18,4 +20,19 @@ let blacklist = ["!", "?", ".", "@", "~", ",", "'"]
 let text = "I'M SO EXCITED!!!~!"
 console.log(`clean ${text} with blacklist [${blacklist}] validation : ${validator.blacklist(text,blacklist)}`);
 //Ultimately, it should print "im so excited"
+
+
+function makeHuman(number){
+    const emptyArray =[...Array(number)]
+   const humans = emptyArray.map(_ =>{
+    return {
+        name : faker.person.firstName(),
+        img:faker.image.avatar(),
+        companyName: faker.company.name()   
+    }
+   })
+
+   humans.forEach(human=>console.log(`${human.name}, ${human.img}, ${human.companyName}`))
+}
+makeHuman(2)
 
