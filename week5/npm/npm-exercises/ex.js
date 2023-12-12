@@ -36,3 +36,5 @@ function makeHuman(number){
 }
 makeHuman(2)
 
+//ex3
+// add npm to tweeter project and install jquery
