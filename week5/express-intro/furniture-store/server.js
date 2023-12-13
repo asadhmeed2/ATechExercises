@@ -60,7 +60,6 @@ app.get('/sale', (req, res) => {
     }
 
     const descountStore = store.map(item => {
-        
         if(item.inventory > 10){
          item = {...item, price : item.price * 0.5};
         }
