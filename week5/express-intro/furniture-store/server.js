@@ -30,6 +30,27 @@ app.get('/priceCheck/:name', (req, res) => {
     res.json({price});
 })
 
+app.get('/buy/:name', (req, res) => {
+   
+    const itemName = req.params.name
+    const itemIdx = store.findIndex(item => item.name === itemName);
+
+    
+    if(itemIdx === -1) {
+        return res.sendStatus(404).json({error:'item not in stock'})
+    }
+    
+    if(!store[itemIdx].inventory){
+        return res.sendStatus(301).json({error:'item out of stock'})
+    }
+
+    console.log(store[itemIdx].inventory);
+
+    store[itemIdx].inventory -= 1;
+    
+    res.json({item:store[itemIdx]});
+})
+
 // app.get('/', (req, res) => {
 //     res.json('Server is up and running smoothly')
 // })
