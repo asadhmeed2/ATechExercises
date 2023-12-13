@@ -1,5 +1,6 @@
 
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
@@ -12,20 +13,26 @@ const store = [
     { name: "picture frame", inventory: 31, price: 70 }
 ]
 
-
+app.use(express.static(path.join(__dirname, 'dist')))
+app.use(express.static(path.join(__dirname, 'node_modules')))
 
 app.get('/priceCheck/:name', (req, res) => {
    
     const itemName = req.params.name
     const item = store.find(item => item.name === itemName);
+
+    if(!item) {
+        return res.json({price:0})
+    }
+
     const price =item.price
     
     res.json({price});
 })
 
-app.get('/', (req, res) => {
-    res.json('Server is up and running smoothly')
-})
+// app.get('/', (req, res) => {
+//     res.json('Server is up and running smoothly')
+// })
 
 app.listen(PORT ,()=>{
     console.log(`server running on port ${PORT}`);
