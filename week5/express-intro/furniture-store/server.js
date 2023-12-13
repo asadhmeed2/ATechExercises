@@ -51,6 +51,26 @@ app.get('/buy/:name', (req, res) => {
     res.json({item:store[itemIdx]});
 })
 
+app.get('/sale', (req, res) => {
+   
+    const {admin} = req.query
+    
+    if(admin !== 'true'){
+        res.json(store);
+    }
+
+    const descountStore = store.map(item => {
+        
+        if(item.inventory > 10){
+         item = {...item, price : item.price * 0.5};
+        }
+        return item
+    })
+    return res.json(descountStore)
+})
+
+
+
 // app.get('/', (req, res) => {
 //     res.json('Server is up and running smoothly')
 // })
