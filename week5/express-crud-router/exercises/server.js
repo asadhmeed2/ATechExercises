@@ -49,6 +49,38 @@ app.post('/addWord', function(req, res){
         return res.send({error:'input should be one word only'})
     }
     
+    addWord(word);
+    
+    return res.send({text: `Added ${word}`, currentCount: wordCeunter[word] })
+})
+
+app.post('/addWordsFromSentence', function(req, res){
+    const sentence  = req.body.sentence 
+    if(typeof sentence !== 'string'){
+        return res.send({error:"sentence is not a string"})
+    }
+
+    const words = sentence.trim().split(' ')
+    let numOfNewWords = 0;
+    let numOldWords =0;
+    for(let word of words){
+        if(wordCeunter[word]){
+            numOldWords += 1
+        }else{
+            numOfNewWords += 1
+        }
+        addWord(word)
+    }
+    
+    return res.send({text: `Added ${numOfNewWords} words, ${numOldWords} already existed`, currentCount: -1})
+})
+
+app.listen(PORT, function(){
+    console.log(`server is running on port ${PORT}`);
+})
+
+const addWord = function(word){
+    
     const wordInWordsCeunter =  !!wordCeunter[word];
     
     if(wordInWordsCeunter){
@@ -56,9 +88,4 @@ app.post('/addWord', function(req, res){
     }else{
         wordCeunter[word] = 1
     }
-    return res.send({text: `Added ${word}`, currentCount: wordCeunter[word] })
-})
-
-app.listen(PORT, function(){
-    console.log(`server is running on port ${PORT}`);
-})
+}
