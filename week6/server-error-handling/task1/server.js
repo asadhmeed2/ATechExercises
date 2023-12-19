@@ -3,7 +3,7 @@ const app = express();
 
 const userModal = require('./user') 
 
-const {UserExistsError} = require('./customErrors')
+const {UserExistsError,UserDoseNotExistError} = require('./customErrors')
 
 
 app.use(express.json())
@@ -24,6 +24,23 @@ app.get('/users', function (req, res) {
     res.send(users)
 })
 
+// ex2
+app.get('/users/:username', function (req, res) {
+    const username = req.params.username
+    try{
+        userModal.validateUserName(username);
+        userModal.checkIfDoseNotExists(username,users);
+        const user = userModal.getUser(username,users);
+
+        return res.status(200).send(user);
+    }catch(e){
+        if(e instanceof UserDoseNotExistError){
+            return res.status(404).send({message:e.message})
+        }
+        res.status(400).send({message:e.message})
+    }
+})
+
 app.delete('/users/:username', function (req, res) {
     let username = req.params.username
     let userIndex = users.findIndex(user => user.username === username)
@@ -34,11 +51,14 @@ app.delete('/users/:username', function (req, res) {
 //on deleting the user user with the username params may not exist in the users array
 // so splice wont work properly 
 
+// ex1
 app.post('/users', function (req, res) {
     const newUser = req.body // the body is not empty
     try{
-        userModal.checkIfExists(newUser,users);
         userModal.validateUser(newUser);
+
+        userModal.checkIfExists(newUser.username,users);
+
         users.push(newUser)
         res.status(201).end()
 
@@ -49,9 +69,6 @@ app.post('/users', function (req, res) {
         res.status(400).send({message:e.message})
     }
 
-    
-    
-    
 })
 
 app.listen(PORT, function (){

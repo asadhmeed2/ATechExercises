@@ -4,14 +4,20 @@ const {
     CountryIsNotValidError,
     AgeIsNotValidError,
     UserExistsError,
+    UserDoseNotExistError
 } = require('./customErrors')
 
 class User {
 
-    validateUser(user){
-        if(typeof user.username !== 'string' || user.username === ''){
+    validateUserName(userName) {
+        if(typeof userName !== 'string' || userName === ''){
             throw new UserNameIsNotValidError();
         }
+    }
+
+    validateUser(user){
+        
+        this.validateUserName(user.username)
 
         if(typeof user.name !== 'string' || user.name === ''){
             throw new NameIsNotValidError()
@@ -21,18 +27,31 @@ class User {
             throw new CountryIsNotValidError()
         }
 
-        if(typeof  +user.age === NaN || user.age === '0'){
+        if(isNaN(+user.age) || user.age === '0'){
             throw new AgeIsNotValidError()
         }
 
     }
 
-    checkIfExists(user,users){
-        const userIdx = users.findIndex(usr=> user.username === usr.username)
-        if(userIdx === -1){
+    checkIfExists(username,users){
+        const userIdx = users.findIndex(usr=> username === usr.username)
+        if(userIdx !== -1){
             throw new UserExistsError()
         }
     }
+
+    checkIfDoseNotExists(username,users){
+        const userIdx = users.findIndex(usr=> username === usr.username)
+        if(userIdx === -1){
+            throw new UserDoseNotExistError()
+        }
+    }
+
+    getUser(username,users){
+        const user = users.find(usr=> username === usr.username)
+        return user;
+    }
+
 
 
 

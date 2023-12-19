@@ -15,7 +15,11 @@ class AgeIsNotValidError extends Error {
 }
 
 class UserExistsError extends Error {
-    message='Age must be a number'
+    message='User Already Exists'
+}
+
+class UserDoseNotExistError extends Error {
+    message='User Dose Not Exists'
 }
 
 module.exports = {
@@ -24,4 +28,5 @@ module.exports = {
     NameIsNotValidError,
     AgeIsNotValidError,
     UserExistsError,
+    UserDoseNotExistError
 }
