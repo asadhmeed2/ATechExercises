@@ -9,9 +9,8 @@ app.use(express.urlencoded({ extended: false }))
 
 // Mongoose setup
 const mongoose = require('mongoose')
-mongoose.connect("mongodb://127.0.0.1:27017/peopleDB", {
-  useNewUrlParser: true,
-}).catch((err)=> console.log(err))
+mongoose.connect("mongodb://127.0.0.1:27017/peopleDB", {})
+.catch((err)=> console.log(err))
 
 app.use('/people', api)
 

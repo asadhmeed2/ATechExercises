@@ -21,6 +21,19 @@ router.post('/', function (req, res) {
     }
 })
 
+router.put('/:id', function (req, res) {
+    const personId = req.params.id;
+    const person = req.body
+    
+        Person.findByIdAndUpdate(personId,person,{new:true}).then( function (data){
+            console.log(data);
+            res.status(201).json(data)
+        }).catch(error=>{
+            console.error(error);
+        })
+    
+})
+
 
 
 module.exports = router
