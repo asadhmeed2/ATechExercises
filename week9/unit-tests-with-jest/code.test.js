@@ -7,6 +7,6 @@ test("add should return sum of a + b", () => {
 
 test("calculateHyp should return the square root of num1 + num2", () => {
 	    let sqrt = calculateHyp(3, 4)
-	    expect(sqrt).toBe(5)
+	    expect(sqrt).toBe(5)//
 })
 
