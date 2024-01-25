@@ -28,12 +28,15 @@ const CURRENT_PAGE = {
 function App() {
   const [state, setState] = useState(data);
   const [nextPage, setNextPage] = useState(CURRENT_PAGE.LANDING);
+  const [currentPage, setCurrentPage] = useState(CURRENT_PAGE.HOME);
 
   const switchPage = () => {
     if (nextPage === CURRENT_PAGE.HOME) {
       setNextPage(CURRENT_PAGE.LANDING);
+      setCurrentPage(CURRENT_PAGE.HOME);
     } else {
       setNextPage(CURRENT_PAGE.HOME);
+      setCurrentPage(CURRENT_PAGE.LANDING);
     }
   };
 
@@ -41,10 +44,10 @@ function App() {
     <div className="App">
       {/* <Hudini /> */}
 
-      {nextPage === CURRENT_PAGE.HOME && (
+      {currentPage === CURRENT_PAGE.LANDING && (
         <Landing user={state.user} store={state.store} />
       )}
-      {nextPage === CURRENT_PAGE.LANDING && (
+      {currentPage === CURRENT_PAGE.HOME && (
         <Home store={state.store} shouldDiscount={state.shouldDiscount} />
       )}
 
