@@ -15,6 +15,16 @@ class EmployeeMatrix extends Matrix {
       .filter((employee) => employee[2] === department)
       .map((employee) => employee[1]);
   }
+
+  /**
+   *
+   * @param {string} department
+   */
+  getTotalSalary(department) {
+    return this.matrix
+      .filter((employee) => employee[2] === department)
+      .reduce((sum, employee) => sum + employee[3], 0);
+  }
 }
 
 //You can paste the code from the lesson below to test your solution
@@ -35,6 +45,9 @@ m.print();
 
 console.log(m.getEmployees("Finance")); //prints [ 'Gillian', 'Anisha' ]
 console.log(m.getEmployees("Design")); //prints [ 'Tibor', 'Jakub', 'Mar', 'Nisha' ]
+
+console.log(m.getTotalSalary("Finance")); //prints 4300
+console.log(m.getTotalSalary("Design")); //prints 5300
 //prints
 /*
 e10021  Gillian Finance 2000
