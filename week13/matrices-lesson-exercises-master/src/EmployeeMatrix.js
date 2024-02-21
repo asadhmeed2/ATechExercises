@@ -25,6 +25,20 @@ class EmployeeMatrix extends Matrix {
       .filter((employee) => employee[2] === department)
       .reduce((sum, employee) => sum + employee[3], 0);
   }
+
+  findRichest() {
+    let name = this.matrix[0][1];
+    let biggestSalary = this.matrix[0][3];
+
+    for (let employee of this.matrix) {
+      if (biggestSalary < employee[3]) {
+        biggestSalary = employee[3];
+        name = employee[1];
+      }
+    }
+
+    return name;
+  }
 }
 
 //You can paste the code from the lesson below to test your solution
@@ -48,6 +62,7 @@ console.log(m.getEmployees("Design")); //prints [ 'Tibor', 'Jakub', 'Mar', 'Nish
 
 console.log(m.getTotalSalary("Finance")); //prints 4300
 console.log(m.getTotalSalary("Design")); //prints 5300
+console.log(m.findRichest()); //prints Anisha
 //prints
 /*
 e10021  Gillian Finance 2000
