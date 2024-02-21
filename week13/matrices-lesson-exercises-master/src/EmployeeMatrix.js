@@ -5,6 +5,16 @@ class EmployeeMatrix extends Matrix {
   loadData(salaryData) {
     this.matrix = salaryData.map((salary) => Object.values(salary));
   }
+
+  /**
+   *
+   * @param {string} department
+   */
+  getEmployees(department) {
+    return this.matrix
+      .filter((employee) => employee[2] === department)
+      .map((employee) => employee[1]);
+  }
 }
 
 //You can paste the code from the lesson below to test your solution
@@ -22,6 +32,9 @@ let m = new EmployeeMatrix();
 
 m.loadData(data);
 m.print();
+
+console.log(m.getEmployees("Finance")); //prints [ 'Gillian', 'Anisha' ]
+console.log(m.getEmployees("Design")); //prints [ 'Tibor', 'Jakub', 'Mar', 'Nisha' ]
 //prints
 /*
 e10021  Gillian Finance 2000
