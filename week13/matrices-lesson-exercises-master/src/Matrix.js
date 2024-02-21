@@ -26,7 +26,13 @@ class Matrix {
   }
 
   print() {
-    console.log(this.matrix);
+    for (let row of this.matrix) {
+      let string = "";
+      for (let col of row) {
+        string += " " + col + " ";
+      }
+      console.log(string);
+    }
   }
 
   printColumn(column) {
