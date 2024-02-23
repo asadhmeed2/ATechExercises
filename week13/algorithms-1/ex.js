@@ -235,3 +235,59 @@ let homeLocation = { x: 4, y: 2 };
 const closest = findClosest(pizzaLocations, homeLocation); // should return {x: 3, y: 1}
 
 console.log("🚀 ~ closest:", closest);
+
+//str='' secret='' str !== string secret !== string
+
+const secretEncrypt = (str, secret) => {
+  if (typeof str !== "string" || typeof secret !== "string") {
+    return "";
+  }
+
+  if (str === "" || secret === "") {
+    return str;
+  }
+
+  const minCharCode = "a".charCodeAt(0);
+
+  let secretIndex = 0;
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    const addedCode = secret.charCodeAt(secretIndex) - minCharCode + 1;
+    const newCharCode = str.charCodeAt(i) + addedCode;
+
+    result += String.fromCharCode(newCharCode);
+    secretIndex = (secretIndex + 1) % secret.length;
+  }
+
+  return result;
+};
+
+console.log(secretEncrypt("elephant", "cab")); //hmgsicqu
+
+const secretDecrypt = (str, secret) => {
+  if (typeof str !== "string" || typeof secret !== "string") {
+    return "";
+  }
+
+  if (str === "" || secret === "") {
+    return str;
+  }
+
+  const minCharCode = "a".charCodeAt(0);
+
+  let secretIndex = 0;
+  let result = "";
+
+  for (let i = 0; i < str.length; i++) {
+    const addedCode = secret.charCodeAt(secretIndex) - minCharCode + 1;
+    const newCharCode = str.charCodeAt(i) - addedCode;
+
+    result += String.fromCharCode(newCharCode);
+    secretIndex = (secretIndex + 1) % secret.length;
+  }
+
+  return result;
+};
+
+console.log(secretDecrypt("hmgsicqu", "cab")); //elephant
