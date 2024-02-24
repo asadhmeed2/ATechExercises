@@ -59,8 +59,60 @@ const highestWordScore = (str) => {
   return result;
 };
 
-console.log(highestWordScore("asaad is dowing a interview"));
-console.log(highestWordScore("if you are a winner"));
-console.log(highestWordScore("   i  "));
-console.log(highestWordScore("   i"));
-console.log(highestWordScore("i"));
+// console.log(highestWordScore("asaad is dowing a interview"));
+// console.log(highestWordScore("if you are a winner"));
+// console.log(highestWordScore("   i  "));
+// console.log(highestWordScore("   i"));
+// console.log(highestWordScore("i"));
+
+// What would be Consoled?
+
+// (function () {
+//   console.log(1);
+//   setTimeout(function () {
+//     console.log(2);
+//   }, 1000);
+//   console.log(3);
+//   setTimeout(function () {
+//     console.log(4);
+//   }, 0);
+//   setTimeout(function () {
+//     console.log(6);
+//   }, 0);
+//   console.log(5);
+// })();
+
+//log 1
+//log 3
+//log 5
+//log 4
+//log 6
+//log 2
+
+//unique Characters
+
+//''
+//' '
+//not string
+//what about spaces are thy considered character or to ignore
+//is the string has one word in it
+
+const isUniqueCharacters = (str) => {
+  const set = new Set();
+  const trimStr = str.trim();
+  for (let char of trimStr) {
+    if (char !== " ") {
+      if (set.has(char)) {
+        return false;
+      }
+      set.add(char);
+    }
+  }
+  return true;
+};
+
+console.log(isUniqueCharacters("hello"));
+console.log(isUniqueCharacters("cat"));
+console.log(isUniqueCharacters(" "));
+
+// Chars to Length
