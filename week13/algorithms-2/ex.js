@@ -238,3 +238,4 @@ let y = { b: x, b3: ["firtsY", x] };
 let z = deepClone(y);
 
 console.log(JSON.stringify(z));
+exercises / week13 / algorithms - 2;
