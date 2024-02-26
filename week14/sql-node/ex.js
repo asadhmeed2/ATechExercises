@@ -28,7 +28,8 @@ const add = async (table, data) => {
 };
 
 const get = async (table, column, data) => {
-  const query = `SELECT * FROM ${table} WHERE ${column} = '${data}'`;
+  let query = `SELECT * FROM ${table} WHERE ${column} = '${data}'`;
+
   const res = await sequelize.query(query);
   return res[0];
 };
