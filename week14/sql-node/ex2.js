@@ -30,6 +30,7 @@ const findOwners = async (pokemonName) => {
   return trainersData[0].map((t) => t.t_name);
 };
 
+// ex5
 const findRoster = async (trainerName) => {
   const query = `SELECT p.p_name FROM  pokemon as p ,trainer as t, pokemon_trainer as p_t
     WHERE  p_t.p_id = p.id AND p_t.t_id = t.id AND t.t_name = '${trainerName}'`;
@@ -38,6 +39,7 @@ const findRoster = async (trainerName) => {
   return pokemonData[0].map((p) => p.p_name);
 };
 
+//ex6
 const mostOwnedPokemon = async () => {
   const query = `SELECT p.p_name  as name,COUNT(*) as count FROM  pokemon as p ,trainer as t, pokemon_trainer as p_t
     WHERE  p_t.p_id = p.id AND p_t.t_id = t.id 
